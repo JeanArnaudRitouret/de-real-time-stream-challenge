@@ -2,7 +2,6 @@ import random
 import  time
 from datetime import datetime, timezone
 from typing import List, Literal
-import threading
 from dataclasses import dataclass
 from de_real_time_stream_challenge.src.config import quotes_db, update_interval_seconds
 from de_real_time_stream_challenge.models.Quotes import Quote
@@ -131,26 +130,3 @@ def simulate_data_stream(print_quotes: bool = False) -> None:
             print(f'quotes: {quotes_db}')
 
         time.sleep(update_interval_seconds)
-
-
-if __name__ == '__main__':
-    stream_thread = threading.Thread(
-        target=simulate_data_stream,
-        kwargs={'print_quotes': True}
-    )
-    quotes_extremum_thread = threading.Thread(
-        target=get_quotes_extremum,
-        kwargs={'print_extremums': True, 'currency_pair_name': 'BTC-NOK'}
-    )
-    quotes_max_spread_thread = threading.Thread(
-        target=get_quotes_max_spread,
-        kwargs={'print_max_spread': True, 'currency_pair_name': 'BTC-NOK'}
-    )
-
-    stream_thread.start()
-    quotes_extremum_thread.start()
-    quotes_max_spread_thread.start()
-
-    stream_thread.join()
-    quotes_extremum_thread.join()
-    quotes_max_spread_thread.join()

@@ -1,6 +1,5 @@
 from datetime import datetime, timezone
 import  time
-from typing import List
 import pandas as pd
 from de_real_time_stream_challenge.src.config import quotes_db, quote_summary_db, update_interval_seconds
 from de_real_time_stream_challenge.models.Quotes import QuoteSummary
@@ -125,21 +124,3 @@ def predict_next_mid_price(
         time.sleep(update_interval_seconds)
         if print_next_mid_price:
             print(f'Predicted next mid price for currency pair {currency_pair_name}: {predicted_mid_price}')
-
-
-
-
-
-if __name__ == '__main__':
-    # quotes = [
-    #     Quote(currency_pair_name='BTC-NOK', side='bid', price=815543.9149111389, quantity=0.6267406663026884, timestamp=datetime.datetime(2024, 11, 6, 18, 11, 59, 254267)),
-    #     Quote(currency_pair_name='BTC-NOK', side='bid', price=815543.9149111389, quantity=0.5, timestamp=datetime.datetime(2024, 11, 6, 18, 12, 59, 254267)),
-    #     Quote(currency_pair_name='BTC-NOK', side='bid', price=826016.7645705618, quantity=0.6409804365162899, timestamp=datetime.datetime(2024, 11, 6, 18, 11, 59, 254290)),
-    #     Quote(currency_pair_name='BTC-NOK', side='ask', price=818471.598794355, quantity=0.6209118372142054, timestamp=datetime.datetime(2024, 11, 6, 18, 11, 59, 254292)),
-    #     Quote(currency_pair_name='BTC-NOK', side='ask', price=813201.1229592981, quantity=0.6973157828359217, timestamp=datetime.datetime(2024, 11, 6, 18, 11, 59, 254294)),
-    # ]
-    # get_quotes_extremum(
-    #     quotes_db=quotes,
-    #     print_extremum=True
-    # )
-    pass
