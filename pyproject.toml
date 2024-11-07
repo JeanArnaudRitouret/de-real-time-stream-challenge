@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "de_real_time_stream_challenge"
+version = "0.1.0"
+description = "Challenge to simulate a stream of real-time data"
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+readme = "README.md"
+requires-python = "==3.11.3"
+dependencies = [
+    "PyYAML==6.0",
+    "pydantic==2.9",
+    "pandas==2.2.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black"]
+
+[tool.setuptools.packages.find]
+where = ["de_real_time_stream_challenge"]

@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Setuptools / dist / egg artifacts
+*.egg-info/
+build/
+dist/
+*.egg
+*.egg-info/
+.eggs/
+
+# Compiled Python files
+*.pyc
+
+# Virtual environments
+.env/
+.venv/
+
+# System files
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
