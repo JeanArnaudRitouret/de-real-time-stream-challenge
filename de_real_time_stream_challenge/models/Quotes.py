@@ -11,9 +11,12 @@ class Quote(BaseModel):
     timestamp: datetime
 
     @field_validator('price', mode='before')
-    def round_to_two_decimals(cls, v):
-        # Convert to Decimal, round to 2 decimal places, and cast back to float
-        return float(Decimal(v).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP))
+    def precision_to_two_decimals(cls, v):
+        return float(Decimal(v).quantize(Decimal('0.00')))
+
+    @field_validator('quantity', mode='before')
+    def precision_to_8_decimals(cls, v):
+        return float(Decimal(v).quantize(Decimal('0.00000000')))
 
 
 class QuoteSummary(BaseModel):
@@ -26,6 +29,6 @@ class QuoteSummary(BaseModel):
     timestamp: datetime
 
     @field_validator('highest_ask_price', 'lowest_ask_price', 'mid_price', 'highest_bid_price', 'lowest_bid_price', mode='before')
-    def round_to_two_decimals(cls, v):
+    def precision_to_two_decimals(cls, v):
         # Convert to Decimal, round to 2 decimal places, and cast back to float
-        return float(Decimal(v).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP))
+        return float(Decimal(v).quantize(Decimal('0.00')))
